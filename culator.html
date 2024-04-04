@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+<style>
+    .container {
+        max-width: 300px;
+        margin: 0 auto;
+        text-align: left;
+		
+    }
+    .button {
+        width: 72px;
+        height: 30px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .result {
+        width: 100%;
+        margin-bottom: 17px;
+        padding: 5px;
+        box-sizing: border-box;
+        font-size: 18px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div>Calculator</div>
+    <input type="text" class="result" id="result" readonly>
+    <div>
+        <button class="button" onclick="appendToResult('7')">7</button>
+        <button class="button" onclick="appendToResult('8')">8</button>
+        <button class="button" onclick="appendToResult('9')">9</button>
+        <button class="button" onclick="appendToResult('/')">/</button>
+    </div>
+    <div>
+        <button class="button" onclick="appendToResult('4')">4</button>
+        <button class="button" onclick="appendToResult('5')">5</button>
+        <button class="button" onclick="appendToResult('6')">6</button>
+        <button class="button" onclick="appendToResult('*')">x</button>
+    </div>
+    <div>
+        <button class="button" onclick="appendToResult('1')">1</button>
+        <button class="button" onclick="appendToResult('2')">2</button>
+        <button class="button" onclick="appendToResult('3')">3</button>
+        <button class="button" onclick="appendToResult('-')">-</button>
+    </div>
+    <div>
+        <button class="button" onclick="appendToResult('.')">.</button>
+        <button class="button" onclick="appendToResult('0')">0</button>
+        <button class="button" onclick="clearResult()">Del</button>
+        <button class="button" onclick="appendToResult('+')">+</button>
+    </div>
+    <div>
+        <button class="button" onclick="calculate()">=</button>
+    </div>
+</div>
+
+<script>
+    function appendToResult(value) {
+        document.getElementById('result').value += value;
+    }
+
+    function clearResult() {
+        document.getElementById('result').value = '';
+    }
+
+    function calculate() {
+        const result = document.getElementById('result');
+        try {
+            result.value = eval(result.value);
+        } catch (error) {
+            result.value = 'Error';
+        }
+    }
+</script>
+</body>
+</html>
